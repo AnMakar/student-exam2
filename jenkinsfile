@@ -2,9 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('test') {
             steps {
+                sh ```
                 echo 'Hello World'
+                cd /opt/student-exam2
+                ls -la
+                ```
             }
         }
     }
