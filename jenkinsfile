@@ -7,7 +7,6 @@ pipeline {
                 sh "echo 'Hello World'"
                 sh "cd /opt/student-exam2"
                 sh "ls -la /opt"
-                ```
             }
         }
     }
