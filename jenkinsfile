@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh "git clone https://github.com/AnMakar/student-exam2 /opt/student-exam2"
-                sh "cd /opt/student-exam2"
+                sh "git clone https://github.com/AnMakar/student-exam2"
                 sh "ls -la"
             }
         }
