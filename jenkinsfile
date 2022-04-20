@@ -4,10 +4,9 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh ```
-                echo 'Hello World'
-                cd /opt/student-exam2
-                ls -la
+                sh "echo 'Hello World'"
+                sh "cd /opt/student-exam2"
+                sh "ls -la /opt"
                 ```
             }
         }
