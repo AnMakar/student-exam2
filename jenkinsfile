@@ -8,5 +8,22 @@ pipeline {
                 sh "ls -la"
             }
         }
+        stage('Docker Image Build') {
+			steps {
+				sh "docker build -t flask ."
+			}
+		}
+		stage("Docker Container Run") {
+			steps {
+				sh "docker run --name flask --detach --publish 5000:5000 flask"
+			}
+		}
+		stage("Docker Container Tests") {
+			steps {
+				sh "docker exec flask pip install -e '.[test]'"
+				sh "docker exec flask coverage run -m pytest"
+				sh "docker exec flask coverage report"
+			}
+		}
     }
 }
