@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh "python -m venv venv"
 		sh ". venv/bin/activate"
 		sh "pip install -e '.[test]'"
 		sh "coverage run -m pytest"
