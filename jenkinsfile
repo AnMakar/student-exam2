@@ -12,7 +12,7 @@ pipeline {
             steps {
 		sh '''
 		cd /opt/student-exam2
-		. venv/bin/activate
+		/opt/student-exam2/venv/bin/activate
 		pip install -e '.[test]'
 		coverage run -m pytest
 		coverage report
