@@ -12,7 +12,8 @@ pipeline {
             steps {
 		sh "cd /opt/student-exam2"
 		sh "ls -la"
-		sh "/opt/student-exam2/venv/bin/activate"
+		sh "pwd"
+		sh ". venv/bin/activate"
 		sh "pip install -e '.[test]'"
 		sh "coverage run -m pytest"
 		sh "coverage report"
