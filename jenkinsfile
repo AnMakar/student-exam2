@@ -4,10 +4,8 @@ pipeline {
     stages {
         stage('github pull') {
 		steps {
-			sh '''
-			cd /opt/student-exam2
-			git pull origin master
-			'''
+			sh "cd /opt/student-exam2"
+			sh "git pull origin master"
 		}
 	}	
 	stage('test') {
