@@ -4,26 +4,12 @@ pipeline {
     stages {
         stage('test') {
             steps {
-                sh "git clone https://github.com/AnMakar/student-exam2"
-                sh "ls -la"
+                sh "python -m venv venv"
+		sh ". venv/bin/activate"
+		sh "pip install -e '.[test]'"
+		sh "coverage run -m pytest"
+		sh "coverage report"
             }
         }
-        stage('Docker Image Build') {
-			steps {
-				sh "docker build -t flask ."
-			}
-		}
-		stage("Docker Container Run") {
-			steps {
-				sh "docker run --name flask --detach --publish 5000:5000 flask"
-			}
-		}
-		stage("Docker Container Tests") {
-			steps {
-				sh "docker exec flask pip install -e '.[test]'"
-				sh "docker exec flask coverage run -m pytest"
-				sh "docker exec flask coverage report"
-			}
-		}
     }
 }
