@@ -2,8 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('test') {
+        stage('github pull') {
+		steps {
+			sh "cd /opt/student-exam2"
+			sh "git pull origin master"
+		}
+	}	
+	stage('test') {
             steps {
+		sh "cd /opt/student-exam2"
 		sh ". venv/bin/activate"
 		sh "pip install -e '.[test]'"
 		sh "coverage run -m pytest"
