@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 
-    stages {
+	stages {
 		stage('Test') {
     		steps {
 	    		sh '''
@@ -17,9 +17,9 @@ pipeline {
 			}
 		}
 		stage('Docker Build') {
-			stage {
+			steps {
 				DockerImage = docker.build anmean/student-exam2 + ":flask"
 			}
 		}
-    }
+	}
 }
