@@ -19,7 +19,8 @@ pipeline {
 		stage('Docker Build') {
 			steps { script {
 				DockerImage = docker.build anmean/student-exam2 + ":flask"
-			} }
+				}
+			}
 		}
 	}
 }
