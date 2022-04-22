@@ -2,12 +2,14 @@ pipeline {
 	agent any
 	environment {
 		mydockerhub = "anmean/student-exam2"
+		mydockerhubCredential = 'dockerhub'
 	}
 
 	stages {
 		stage('Test') {
     		steps {
-	    		sh '''
+	    		echo "========== FLASK TEST START ========"
+			sh '''
 				ls -la
 				pwd
 				python3 -m venv venv
@@ -21,7 +23,16 @@ pipeline {
 		}
 		stage('Docker Build') {
 			steps { script {
+				echo "========== DOCKER BUILD START ========"
 				DockerImage = docker.build(mydockerhub + ":flask")
+				}
+			}
+		}
+		stage('Docker Push') {
+			steps {
+				echo "========== DOCKER PUSH START ========"
+				docker.withRegistry( '', mydockerhubCredential ) {
+					DockerImage.push()
 				}
 			}
 		}
