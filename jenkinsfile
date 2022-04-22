@@ -14,7 +14,12 @@ pipeline {
 				venv/bin/coverage run -m pytest
 				venv/bin/coverage report
 				'''
-            	}
-        	}
+			}
+		}
+		stage('Docker Build') {
+			stage {
+				DockerImage = docker.build anmean/student-exam2 + ":flask"
+			}
+		}
     }
 }
