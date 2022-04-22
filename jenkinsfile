@@ -29,10 +29,11 @@ pipeline {
 			}
 		}
 		stage('Docker Push') {
-			steps {
+			steps { script
 				echo "========== DOCKER PUSH START ========"
 				docker.withRegistry( '', mydockerhubCredential ) {
 					DockerImage.push()
+				}
 				}
 			}
 		}
