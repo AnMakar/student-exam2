@@ -9,8 +9,8 @@ pipeline {
 				pwd
 				python3 -m venv venv
 				. venv/bin/activate
-				. venv/bin/pip install wheel
-				. venv/bin/pip install -e '.[test]'
+				venv/bin/pip install wheel
+				venv/bin/pip install -e '.[test]'
 				venv/bin/coverage run -m pytest
 				venv/bin/coverage report
 				'''
