@@ -16,10 +16,5 @@ pipeline {
 				'''
             	}
         	}
-		stage('Docker Build') {
-			steps {
-				DockerImage=docker.build(anmean/student-exam2:flask)
-			}
-		}
     }
 }
